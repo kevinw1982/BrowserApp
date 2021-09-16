@@ -138,14 +138,6 @@ namespace BrowserApp
                 tsbForward.Enabled = false;
         }
 
-        private void tstxtUrl_KeyUp(object sender, KeyEventArgs e)
-        {
-            //e is of type KeyeventArgs and contains all the
-            //information that triggered the event. The Keycode
-            //is one those information
-            if (e.KeyCode = Keys.Enter)
-                this.NavigateToUrl(tstxtUrl.Text);
-        }
         private void NavigateToUrl(string url)
         {
             myBrowser.Navigate(url);
@@ -154,6 +146,12 @@ namespace BrowserApp
         private void tsbtnGo_Click(object sender, EventArgs e)
         {
             NavigateToUrl(tstxtUrl.Text);
+        }
+
+        private void tstxtUrl_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                NavigateToUrl(tstxtUrl.Text);
         }
     }
 }

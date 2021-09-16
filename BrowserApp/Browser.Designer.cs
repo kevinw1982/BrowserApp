@@ -32,32 +32,32 @@ namespace BrowserApp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.myBrowser = new System.Windows.Forms.WebBrowser();
             this.msBrowser = new System.Windows.Forms.MenuStrip();
+            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.sscBrowser = new System.Windows.Forms.StatusStrip();
             this.lblApplicationStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbStatus = new System.Windows.Forms.ToolStripProgressBar();
-            this.tsIcons = new System.Windows.Forms.ToolStrip();
             this.tsNavigation = new System.Windows.Forms.ToolStrip();
+            this.tslblAddress = new System.Windows.Forms.ToolStripLabel();
+            this.tstxtUrl = new System.Windows.Forms.ToolStripTextBox();
+            this.tsbtnGo = new System.Windows.Forms.ToolStripButton();
+            this.tsIcons = new System.Windows.Forms.ToolStrip();
             this.tsbBack = new System.Windows.Forms.ToolStripButton();
             this.tsbForward = new System.Windows.Forms.ToolStripButton();
             this.tsbStop = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.tsbHome = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
-            this.tstxtUrl = new System.Windows.Forms.ToolStripTextBox();
-            this.tslblAddress = new System.Windows.Forms.ToolStripLabel();
-            this.tsbtnGo = new System.Windows.Forms.ToolStripButton();
             this.msBrowser.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.sscBrowser.SuspendLayout();
-            this.tsIcons.SuspendLayout();
             this.tsNavigation.SuspendLayout();
+            this.tsIcons.SuspendLayout();
             this.SuspendLayout();
             // 
             // myBrowser
@@ -66,7 +66,7 @@ namespace BrowserApp
             this.myBrowser.Location = new System.Drawing.Point(0, 0);
             this.myBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.myBrowser.Name = "myBrowser";
-            this.myBrowser.Size = new System.Drawing.Size(624, 370);
+            this.myBrowser.Size = new System.Drawing.Size(624, 345);
             this.myBrowser.TabIndex = 0;
             this.myBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.myBrowser_DocumentCompleted);
             this.myBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.myBrowser_Navigating);
@@ -85,6 +85,13 @@ namespace BrowserApp
             this.msBrowser.TabIndex = 1;
             this.msBrowser.Text = "menuStrip1";
             // 
+            // navigateToolStripMenuItem
+            // 
+            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.navigateToolStripMenuItem.Text = "&Navigate";
+            this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -96,16 +103,9 @@ namespace BrowserApp
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // navigateToolStripMenuItem
-            // 
-            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.navigateToolStripMenuItem.Text = "&Navigate";
-            this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
             // 
             // toolStripContainer1
             // 
@@ -117,7 +117,7 @@ namespace BrowserApp
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.myBrowser);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(624, 370);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(624, 345);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -127,8 +127,8 @@ namespace BrowserApp
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsNavigation);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsIcons);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsNavigation);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.msBrowser);
             // 
             // sscBrowser
@@ -153,6 +153,40 @@ namespace BrowserApp
             this.pbStatus.Name = "pbStatus";
             this.pbStatus.Size = new System.Drawing.Size(100, 16);
             // 
+            // tsNavigation
+            // 
+            this.tsNavigation.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsNavigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblAddress,
+            this.tstxtUrl,
+            this.tsbtnGo});
+            this.tsNavigation.Location = new System.Drawing.Point(3, 0);
+            this.tsNavigation.Name = "tsNavigation";
+            this.tsNavigation.Size = new System.Drawing.Size(437, 25);
+            this.tsNavigation.TabIndex = 2;
+            this.tsNavigation.Text = "toolStrip2";
+            // 
+            // tslblAddress
+            // 
+            this.tslblAddress.Name = "tslblAddress";
+            this.tslblAddress.Size = new System.Drawing.Size(0, 22);
+            // 
+            // tstxtUrl
+            // 
+            this.tstxtUrl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tstxtUrl.Name = "tstxtUrl";
+            this.tstxtUrl.Size = new System.Drawing.Size(350, 25);
+            this.tstxtUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tstxtUrl_KeyUp);
+            // 
+            // tsbtnGo
+            // 
+            this.tsbtnGo.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnGo.Image")));
+            this.tsbtnGo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnGo.Name = "tsbtnGo";
+            this.tsbtnGo.Size = new System.Drawing.Size(42, 22);
+            this.tsbtnGo.Text = "Go";
+            this.tsbtnGo.Click += new System.EventHandler(this.tsbtnGo_Click);
+            // 
             // tsIcons
             // 
             this.tsIcons.Dock = System.Windows.Forms.DockStyle.None;
@@ -163,24 +197,11 @@ namespace BrowserApp
             this.tsbRefresh,
             this.tsbHome,
             this.tsbSearch});
-            this.tsIcons.Location = new System.Drawing.Point(3, 0);
+            this.tsIcons.Location = new System.Drawing.Point(3, 49);
             this.tsIcons.Name = "tsIcons";
             this.tsIcons.Size = new System.Drawing.Size(189, 25);
             this.tsIcons.TabIndex = 1;
             this.tsIcons.Text = "toolStrip1";
-            // 
-            // tsNavigation
-            // 
-            this.tsNavigation.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsNavigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslblAddress,
-            this.tstxtUrl,
-            this.tsbtnGo});
-            this.tsNavigation.Location = new System.Drawing.Point(200, 0);
-            this.tsNavigation.Name = "tsNavigation";
-            this.tsNavigation.Size = new System.Drawing.Size(432, 25);
-            this.tsNavigation.TabIndex = 2;
-            this.tsNavigation.Text = "toolStrip2";
             // 
             // tsbBack
             // 
@@ -241,27 +262,6 @@ namespace BrowserApp
             this.tsbSearch.Text = "Search";
             this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
-            // tstxtUrl
-            // 
-            this.tstxtUrl.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tstxtUrl.Name = "tstxtUrl";
-            this.tstxtUrl.Size = new System.Drawing.Size(350, 25);
-            this.tstxtUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tstxtUrl_KeyUp);
-            // 
-            // tslblAddress
-            // 
-            this.tslblAddress.Name = "tslblAddress";
-            this.tslblAddress.Size = new System.Drawing.Size(0, 22);
-            // 
-            // tsbtnGo
-            // 
-            this.tsbtnGo.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnGo.Image")));
-            this.tsbtnGo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnGo.Name = "tsbtnGo";
-            this.tsbtnGo.Size = new System.Drawing.Size(42, 22);
-            this.tsbtnGo.Text = "Go";
-            this.tsbtnGo.Click += new System.EventHandler(this.tsbtnGo_Click);
-            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,10 +284,10 @@ namespace BrowserApp
             this.toolStripContainer1.PerformLayout();
             this.sscBrowser.ResumeLayout(false);
             this.sscBrowser.PerformLayout();
-            this.tsIcons.ResumeLayout(false);
-            this.tsIcons.PerformLayout();
             this.tsNavigation.ResumeLayout(false);
             this.tsNavigation.PerformLayout();
+            this.tsIcons.ResumeLayout(false);
+            this.tsIcons.PerformLayout();
             this.ResumeLayout(false);
 
         }
